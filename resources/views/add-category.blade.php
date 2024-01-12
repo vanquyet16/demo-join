@@ -14,4 +14,7 @@
                     </div>
                 </form>
             </div>
+            <a href="/list-category" class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary" type="submit">VIEW LIST CATEGORY</button>
+            </a>
 @endsection

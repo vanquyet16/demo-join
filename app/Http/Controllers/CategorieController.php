@@ -22,9 +22,11 @@ class CategorieController extends Controller
     }
 
     public function add(Request $request){
-        // $data = $request->all();
+        $request->validate([
+            'name' => 'required|string',
+        ]);
         $categorie = new Categorie();
-        $categorie -> name = $request->name;
+        $categorie->name = $request->input('name');
         $categorie->save();
         return redirect('/list-category');
     }

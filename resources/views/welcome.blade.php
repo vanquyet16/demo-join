@@ -27,4 +27,11 @@
                 <button class="btn btn-primary" type="submit">ADD</button>
             </div>
         </form>
+        <a href="/list-products" class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary" type="submit">VIEW LIST PRODUCT</button>
+            </a>
+        <a href="add-category" class="d-grid gap-2 mt-4">
+                <button class="btn btn-primary" type="submit">ADD CATEGORY</button>
+            </a>
         @endsection
+        

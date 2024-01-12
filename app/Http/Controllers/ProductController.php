@@ -17,13 +17,19 @@ class ProductController extends Controller
         ->get();
         return view('list-product',['dataProduct' => $dataProduct]);
     }
-
     public function add(Request $request){
+        // Validate the incoming request data
+        $request->validate([
+            'nameProduct' => 'required|string',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+            'category_id' => 'required|integer',
+        ]);
         $product = new Product();
-        $product->name = $request->nameProduct;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->category_id = $request->category_id;
+        $product->name = $request->input('nameProduct');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+        $product->category_id = $request->input('category_id');
         $product->save();
         return redirect('/list-products');
     }
