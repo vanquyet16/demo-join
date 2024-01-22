@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $dataCategory = DB::table('categories')->get();
     return view('welcome',['dataCategory'=>$dataCategory]);
-});
+})->name('index');
 
 Route::get('/add-category', [CategorieController:: class, 'index']) ->name('categorie.index');
 
@@ -43,3 +45,16 @@ Route::put('/edit-product/{id}', [ProductController::class,'update']);
 
 Route::get('/edit-category/{id}', [CategorieController::class,'editForm']);
 Route::put('/edit-category/{id}', [CategorieController::class,'update']);
+
+
+// login
+Route::get("/login", [UserController::class,'login']) -> name('login');
+Route::post("/login", [UserController::class,'loginPost']) -> name('login');
+
+
+
+
+//register
+Route::get("/register", [UserController::class,'register']) -> name('register');
+Route::post('/register', [UserController::class,'createAccount']);
+

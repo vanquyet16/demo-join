@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table ->string('description');
+            $table ->string('image');
             $table->unsignedBigInteger('category_id'); // Thêm trường 'category_id' kiểu dữ liệu số nguyên dương
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

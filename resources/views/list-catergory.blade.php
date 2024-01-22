@@ -1,16 +1,29 @@
 @extends('layout.format')
 @section('body')
-           <div>
-           <h1 style="text-align: center;">Danh sách Loại</h1>
-            @if(session('err'))
+    <div>
+        <h1 style="text-align: center;">Danh sách Loại</h1>
+        @if(session('err'))
             <div><span style="color: red;">{{ session('err') }}</span></div>
-            @endif
-            @foreach($dataCategory as $item)
-            <ul style="border: 1px solid black; padding:10px" class="list-group list-group-flush mt-5">
-                <li class="list-group-item">name: {{$item -> name}}</li>
-                <a href="/delete-category/{{$item -> id}}"> <button class="btn btn-primary w-100" type="submit">Xoá</button></a>
-                <a href="/edit-category/{{$item -> id}}"> <button class="btn btn-primary w-100 mt-3" type="submit">Sửa</button></a>
-            </ul>
-            @endforeach
-           </div>
-           @endsection
+        @endif
+
+        <table class="table table-bordered mt-5 text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Tên Loại</th>
+                    <th scope="col">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($dataCategory as $item)
+                    <tr>
+                        <td>{{ $item->name }}</td>
+                        <td>
+                            <a href="/delete-category/{{ $item->id }}" class="btn btn-primary">Xoá</a>
+                            <a href="/edit-category/{{ $item->id }}" class="btn btn-primary">Sửa</a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
